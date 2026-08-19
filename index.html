@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional portfolio for Faisal Haq, a Java developer focused on backend systems, APIs, databases, and clean software delivery.">
+    <title>Faisal Haq | Java Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f9fc;
+            --surface: #ffffff;
+            --surface-strong: #eef3f8;
+            --ink: #16202a;
+            --muted: #5b6b7c;
+            --line: #dbe4ee;
+            --brand: #0f6b5f;
+            --brand-dark: #0a4f46;
+            --accent: #c96f35;
+            --shadow: 0 18px 45px rgba(22, 32, 42, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Inter", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid rgba(219, 228, 238, 0.9);
+            background: rgba(247, 249, 252, 0.92);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 76px;
+            gap: 28px;
+        }
+
+        .brand {
+            display: grid;
+            gap: 2px;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .brand span {
+            color: var(--muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            font-weight: 600;
+            list-style: none;
+        }
+
+        .nav-links a {
+            transition: color 180ms ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--brand);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 18px;
+            border: 1px solid var(--brand);
+            border-radius: 8px;
+            background: var(--brand);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 10px 26px rgba(15, 107, 95, 0.18);
+            transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+        }
+
+        .button:hover {
+            background: var(--brand-dark);
+            border-color: var(--brand-dark);
+            transform: translateY(-1px);
+        }
+
+        .button.secondary {
+            background: transparent;
+            color: var(--brand);
+            box-shadow: none;
+        }
+
+        .button.secondary:hover {
+            background: #e6f3f1;
+        }
+
+        .hero {
+            padding: 78px 0 56px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+            align-items: center;
+            gap: 54px;
+        }
+
+        .eyebrow {
+            color: var(--brand);
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 780px;
+            margin-top: 14px;
+            font-size: clamp(2.4rem, 6vw, 4.7rem);
+            line-height: 1.02;
+            letter-spacing: 0;
+        }
+
+        .lead {
+            max-width: 650px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 36px;
+        }
+
+        .stat {
+            min-height: 98px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 18px;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--ink);
+            font-size: 1.3rem;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .profile-panel {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .profile-panel::before {
+            content: "";
+            display: block;
+            height: 118px;
+            background: linear-gradient(135deg, var(--brand), var(--accent));
+        }
+
+        .profile-card {
+            padding: 0 28px 30px;
+        }
+
+        .portrait {
+            width: 158px;
+            aspect-ratio: 1;
+            margin-top: -78px;
+            border: 6px solid #fff;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 14px 36px rgba(22, 32, 42, 0.18);
+        }
+
+        .profile-card h2 {
+            margin-top: 18px;
+            font-size: 1.5rem;
+        }
+
+        .profile-card p {
+            margin-top: 8px;
+            color: var(--muted);
+        }
+
+        .quick-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 22px;
+            list-style: none;
+        }
+
+        .quick-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            border-top: 1px solid var(--line);
+            padding-top: 10px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .quick-list strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        section {
+            padding: 68px 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(1.8rem, 4vw, 2.55rem);
+            line-height: 1.12;
+        }
+
+        .section-heading p {
+            max-width: 560px;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid.three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid.two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            line-height: 1.3;
+        }
+
+        .card p {
+            margin-top: 10px;
+            color: var(--muted);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .tag {
+            border: 1px solid #cddbe8;
+            border-radius: 999px;
+            background: var(--surface-strong);
+            color: #34485b;
+            padding: 6px 10px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .skills-band {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .skills-band .section-heading p,
+        .skills-band .eyebrow {
+            color: #aebdca;
+        }
+
+        .skills-band .card {
+            border-color: rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .skills-band .card p {
+            color: #cbd6df;
+        }
+
+        .project-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .project-visual {
+            display: grid;
+            place-items: center;
+            aspect-ratio: 16 / 9;
+            background: #dce7f1;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-visual.mark {
+            background: linear-gradient(135deg, #e7f2ef, #f5e6dc);
+            color: var(--brand-dark);
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .project-body {
+            padding: 24px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .project-links .button {
+            min-height: 40px;
+            padding: 0 14px;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .timeline-item {
+            border-left: 3px solid var(--brand);
+            background: var(--surface);
+            border-radius: 0 8px 8px 0;
+            padding: 20px 22px;
+        }
+
+        .timeline-item span {
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 800;
+        }
+
+        .timeline-item h3 {
+            margin-top: 4px;
+        }
+
+        .timeline-item p {
+            margin-top: 8px;
+            color: var(--muted);
+        }
+
+        .certificate-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .certificate-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .contact {
+            background: var(--surface-strong);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+            align-items: start;
+            gap: 24px;
+        }
+
+        .contact-panel,
+        .contact-form {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface);
+            padding: 34px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-panel p {
+            margin-top: 10px;
+            color: var(--muted);
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--surface-strong);
+            color: var(--ink);
+            transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+        }
+
+        .social-link svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .social-link:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: translateY(-1px);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-row label {
+            color: var(--ink);
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        .form-row input,
+        .form-row textarea {
+            width: 100%;
+            border: 1px solid #cddbe8;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--ink);
+            font: inherit;
+            padding: 12px 14px;
+            outline: none;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .form-row textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 4px rgba(15, 107, 95, 0.12);
+        }
+
+        .footer {
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+            text-align: center;
+        }
+
+        @media (max-width: 860px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 18px 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 12px;
+                overflow-x: auto;
+                padding-bottom: 4px;
+            }
+
+            .hero-grid,
+            .grid.three,
+            .grid.two,
+            .certificate-card,
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .card,
+            .project-body,
+            .contact-panel,
+            .contact-form,
+            .profile-card {
+                padding: 20px;
+            }
+
+            .portrait {
+                width: 136px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Primary navigation">
+            <a class="brand" href="#home">
+                Faisal Haq
+                <span>Java Developer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="hero-grid container">
+                <div>
+                    <p class="eyebrow">Backend focused Java developer</p>
+                    <h1>Building reliable Java applications, APIs, and database-backed systems.</h1>
+                    <p class="lead">
+                        I am Faisal Haq, a Java developer focused on clean backend code, practical problem solving, and
+                        dependable software delivery. I work with Java, object-oriented programming, SQL, web
+                        technologies, and modern development workflows.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button" href="#projects">View Work</a>
+                        <a class="button secondary" href="Faisal_Haq_Resume_v3%20(1).pdf" target="_blank"
+                            rel="noopener">View / Download Resume</a>
+                    </div>
+                    <div class="stats" aria-label="Developer strengths">
+                        <div class="stat">
+                            <strong>Java</strong>
+                            <span>Core language</span>
+                        </div>
+                        <div class="stat">
+                            <strong>SQL</strong>
+                            <span>Database logic</span>
+                        </div>
+                        <div class="stat">
+                            <strong>APIs</strong>
+                            <span>Backend services</span>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="profile-panel" aria-label="Profile summary">
+                    <div class="profile-card">
+                        <img class="portrait" src="FAISALHAQ.png" alt="Faisal Haq portrait">
+                        <h2>Professional Java Developer</h2>
+                        <p>
+                            Available for Java backend development, web application work, and entry-level software
+                            engineering opportunities.
+                        </p>
+                        <ul class="quick-list">
+                            <li><span>Focus</span><strong>Backend Development</strong></li>
+                            <li><span>Code style</span><strong>Clean OOP</strong></li>
+                            <li><span>Delivery</span><strong>Reliable and Practical</strong></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">About</p>
+                        <h2>Developer profile</h2>
+                    </div>
+                    <p>
+                        I enjoy turning requirements into maintainable software. My strengths are Java fundamentals,
+                        object-oriented design, debugging, database queries, and building application flows that are easy
+                        to understand and improve.
+                    </p>
+                </div>
+                <div class="grid three">
+                    <article class="card">
+                        <h3>Backend Development</h3>
+                        <p>
+                            Design and implement server-side logic, application modules, REST-style APIs, validation,
+                            and business workflows using Java.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3>Database Work</h3>
+                        <p>
+                            Build SQL queries, model relational data, connect applications to databases, and keep data
+                            access clear and predictable.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <h3>Problem Solving</h3>
+                        <p>
+                            Break down issues, debug carefully, improve code quality, and deliver practical solutions
+                            that match user needs.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-band" id="skills">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Skills</p>
+                        <h2>Technical stack</h2>
+                    </div>
+                    <p>
+                        Skills aligned with my LinkedIn profile and resume, focused on Java backend development,
+                        programming fundamentals, web basics, and modern development tools.
+                    </p>
+                </div>
+                <div class="grid three">
+                    <article class="card">
+                        <h3>Java Development</h3>
+                        <p>Core Java, object-oriented programming, data structures, algorithms, exception handling, and reusable code.</p>
+                        <div class="tag-row">
+                            <span class="tag">Core Java</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">Data Structures</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Backend and APIs</h3>
+                        <p>Java backend development, API-based application work, menu-driven systems, and current Spring Boot learning.</p>
+                        <div class="tag-row">
+                            <span class="tag">Backend Development</span>
+                            <span class="tag">REST APIs</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Exchange Rate API</span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>Web, Tools and Data</h3>
+                        <p>HTML, CSS, JavaScript, SQL basics, Git/GitHub workflow, VS Code, IntelliJ IDEA, and command line usage.</p>
+                        <div class="tag-row">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Git/GitHub</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Projects</p>
+                        <h2>Selected work</h2>
+                    </div>
+                    <p>
+                        Academic and practice projects from my resume that show Java fundamentals, OOP, API usage,
+                        exception handling, and menu-driven application design.
+                    </p>
+                </div>
+                <div class="grid two">
+                    <article class="card project-card">
+                        <div class="project-visual">
+                            <img src="java.png" alt="Java development workspace">
+                        </div>
+                        <div class="project-body">
+                            <h3>ATM Management System</h3>
+                            <p>
+                                Built a console-based banking application using Java with deposit, withdrawal, balance
+                                inquiry, and exception handling features.
+                            </p>
+                            <div class="tag-row">
+                                <span class="tag">Java</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">Exception Handling</span>
+                            </div>
+                            <div class="project-links">
+                                <a class="button secondary" href="https://github.com/faisal-haq/DecodeLabs_Java_P3"
+                                    target="_blank" rel="noopener">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <div class="project-visual mark" aria-hidden="true">FX</div>
+                        <div class="project-body">
+                            <h3>Currency Converter</h3>
+                            <p>
+                                Developed a Java application using an Exchange Rate API to support multiple
+                                international currencies through a clear menu-driven interface.
+                            </p>
+                            <div class="tag-row">
+                                <span class="tag">Java</span>
+                                <span class="tag">API</span>
+                                <span class="tag">Menu Driven</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <div class="project-visual mark" aria-hidden="true">SMS</div>
+                        <div class="project-body">
+                            <h3>Student Grade Calculator</h3>
+                            <p>
+                                Built a Java application for calculating student performance with score validation,
+                                automated totals, average percentage, and grade output.
+                            </p>
+                            <div class="tag-row">
+                                <span class="tag">Java</span>
+                                <span class="tag">Validation</span>
+                                <span class="tag">Grade Logic</span>
+                            </div>
+                            <div class="project-links">
+                                <a class="button secondary" href="https://github.com/faisal-haq/DecodeLabs_Java_P2"
+                                    target="_blank" rel="noopener">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <div class="project-visual mark" aria-hidden="true">NG</div>
+                        <div class="project-body">
+                            <h3>Number Guessing Game</h3>
+                            <p>
+                                Developed an interactive Java game using the Random class, user input handling, and
+                                exception handling for a smoother command-line experience.
+                            </p>
+                            <div class="tag-row">
+                                <span class="tag">Java</span>
+                                <span class="tag">Random Class</span>
+                                <span class="tag">CLI Game</span>
+                            </div>
+                            <div class="project-links">
+                                <a class="button secondary" href="https://github.com/faisal-haq/DecodeLabs_Java_P1"
+                                    target="_blank" rel="noopener">GitHub Repo</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Experience</p>
+                        <h2>Education and growth</h2>
+                    </div>
+                    <p>
+                        I am building a strong Java full stack foundation through formal computer science education,
+                        certification, academic projects, and consistent backend development practice.
+                    </p>
+                </div>
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <span>Expected Graduation 2028</span>
+                        <h3>B.Tech in Computer Science Engineering</h3>
+                        <p>
+                            Studying at Eshan College of Engineering with a current CGPA of 7.6. Focused on computer
+                            science fundamentals, Java programming, data structures, and software development.
+                        </p>
+                    </article>
+                    <article class="timeline-item">
+                        <span>Current</span>
+                        <h3>Aspiring Java Full Stack Developer</h3>
+                        <p>
+                            Practicing Core Java, OOP, Data Structures and Algorithms, HTML, CSS, JavaScript, Git, and
+                            GitHub while currently learning Spring Boot and modern Java technologies.
+                        </p>
+                    </article>
+                    <article class="timeline-item">
+                        <span>Certification</span>
+                        <h3>DecodeLabs Java Programming Certificate</h3>
+                        <p>
+                            Completed Java programming certification and applied the learning through projects such as
+                            ATM Management System, Currency Converter, Student Grade Calculator, and Number Guessing
+                            Game.
+                        </p>
+                    </article>
+                    <article class="timeline-item">
+                        <span>2024</span>
+                        <h3>CBSE Class XII - Roy Vidya Vihar School</h3>
+                        <p>
+                            Completed Class XII with 71%, building the academic foundation for computer science and
+                            engineering studies.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Certificates</p>
+                        <h2>Professional learning</h2>
+                    </div>
+                    <p>
+                        Certifications and learning achievements that support my Java full stack development path. This
+                        section is designed so more certificates can be added as separate cards later.
+                    </p>
+                </div>
+                <div class="grid">
+                    <article class="card certificate-card">
+                        <div>
+                            <h3>Full Stack Development Certificate</h3>
+                            <p>
+                                Certificate showing my learning progress in full stack development, strengthening my
+                                foundation across programming, web technologies, and software development practice.
+                            </p>
+                            <div class="certificate-meta">
+                                <span class="tag">Full Stack</span>
+                                <span class="tag">Java</span>
+                                <span class="tag">Web Development</span>
+                            </div>
+                        </div>
+                        <a class="button" href="full%20stack%20certificate.pdf" target="_blank" rel="noopener">View Certificate</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-layout">
+                    <div class="contact-panel">
+                        <p class="eyebrow">Contact</p>
+                        <h2>Open to Java developer opportunities</h2>
+                        <p>
+                            I am ready to discuss backend development, Java projects, internships, and entry-level
+                            software engineering roles. Send a message here or connect with me on professional
+                            platforms.
+                        </p>
+                        <div class="social-links" aria-label="Professional links">
+                            <a class="social-link"
+                                href="https://www.linkedin.com/in/faisal-haq-861a36306/"
+                                target="_blank" rel="noopener" aria-label="LinkedIn profile">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.54V9H7.1v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
+                                </svg>
+                            </a>
+                            <a class="social-link" href="https://github.com/faisal-haq" target="_blank"
+                                rel="noopener" aria-label="GitHub profile">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 .3a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3z" />
+                                </svg>
+                            </a>
+                            <a class="social-link" href="https://www.instagram.com/official_haq__/"
+                                target="_blank" rel="noopener" aria-label="Instagram profile">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.42.37 1.05.42 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.17-1.05.37-2.22.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.42a3.71 3.71 0 0 1-1.38-.9 3.71 3.71 0 0 1-.9-1.38c-.17-.42-.37-1.05-.42-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.42-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.17 1.05-.37 2.22-.42 1.27-.06 1.65-.07 4.85-.07zm0-2.16C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.34 2.69.93 3.36.62 4.15.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.55 2.9.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.75.29 1.63.49 2.9.55 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.9-.55.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.29-.75.49-1.63.55-2.9.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.55-2.9-.31-.79-.72-1.46-1.39-2.13A5.87 5.87 0 0 0 19.85.62c-.75-.29-1.63-.49-2.9-.55C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" action="https://formspree.io/f/xppakaab" method="POST">
+                        <input type="hidden" name="_subject" value="New portfolio contact message">
+                        <div class="form-row">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" name="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button class="button" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Copyright 2026 Faisal Haq. Java Developer Portfolio.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
